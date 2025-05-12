@@ -1,0 +1,30 @@
+
+/* Fix Leaflet marker icon */
+.leaflet-marker-icon {
+  filter: hue-rotate(210deg);
+}
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 0.5rem;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px;
+}
+
+/* Add some style to the attribution */
+.leaflet-control-attribution {
+  font-size: 10px;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Style the navigation controls */
+.leaflet-touch .leaflet-bar a {
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+}
