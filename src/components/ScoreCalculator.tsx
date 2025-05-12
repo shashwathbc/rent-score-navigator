@@ -8,6 +8,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
+import { MapPin } from "lucide-react";
 
 const ScoreCalculator = () => {
   const { qapData, updateCategoryScore, scorePercentage, totalScore } = useQAP();
@@ -75,12 +76,23 @@ const ScoreCalculator = () => {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild>
-                        <span className="border-b border-dotted border-muted-foreground cursor-help">
+                        <span className={`border-b border-dotted border-muted-foreground cursor-help ${
+                          category.id === "location" ? "flex items-center gap-1 text-primary" : ""
+                        }`}>
+                          {category.id === "location" && <MapPin className="h-4 w-4" />}
                           {category.name}
+                          {category.id === "location" && (
+                            <Badge variant="outline" className="ml-2 text-xs">Proximity-based</Badge>
+                          )}
                         </span>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-xs">
                         <p>{category.description}</p>
+                        {category.id === "location" && (
+                          <p className="mt-2 text-xs italic">
+                            This score is calculated automatically based on the proximity analysis
+                          </p>
+                        )}
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
@@ -98,7 +110,14 @@ const ScoreCalculator = () => {
                 value={[category.currentPoints]}
                 onValueChange={(value) => handleScoreChange(category.id, value)}
                 className="py-4"
+                disabled={category.id === "location"} // Disable manual adjustment for location
               />
+              {category.id === "location" && (
+                <p className="text-xs text-muted-foreground italic">
+                  ℹ️ This score is calculated automatically based on nearby amenities.
+                  Adjust the radius in the map section to update this score.
+                </p>
+              )}
             </div>
           ))}
         </div>
