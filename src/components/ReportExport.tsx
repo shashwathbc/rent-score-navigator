@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "@/contexts/LocationContext";
 import { useQAP } from "@/contexts/QAPContext";
 import { useToast } from "@/hooks/use-toast";
-import { download } from "lucide-react";
-import jsPDF from "jspdf";
+import { Download } from "lucide-react";
+import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 
 const ReportExport = () => {
@@ -157,7 +157,7 @@ const ReportExport = () => {
       className="w-full" 
       disabled={generating || !state}
     >
-      <download className="mr-2 h-4 w-4" />
+      <Download className="mr-2 h-4 w-4" />
       Export PDF Report
     </Button>
   );
