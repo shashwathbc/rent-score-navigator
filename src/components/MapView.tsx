@@ -79,9 +79,7 @@ const MapView = () => {
   return (
     <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-md border border-border">
       <MapContainer
-        key={position.toString()} // Add key to force re-render when position changes
-        center={DEFAULT_POSITION}
-        zoom={DEFAULT_ZOOM}
+        key={`map-${position.join("-")}`}
         className="w-full h-full"
       >
         <TileLayer
