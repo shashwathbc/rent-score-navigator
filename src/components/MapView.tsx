@@ -79,13 +79,14 @@ const MapView = () => {
   return (
     <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-md border border-border">
       <MapContainer
-        center={position}
-        zoom={position === DEFAULT_POSITION ? DEFAULT_ZOOM : 12}
+        key={position.toString()} // Add key to force re-render when position changes
+        center={DEFAULT_POSITION}
+        zoom={DEFAULT_ZOOM}
         className="w-full h-full"
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <SetViewOnChange coords={position} />
         
