@@ -80,11 +80,13 @@ const MapView = () => {
     <div className="w-full h-[400px] rounded-lg overflow-hidden shadow-md border border-border">
       <MapContainer
         key={`map-${position.join("-")}`}
+        center={DEFAULT_POSITION}
+        zoom={DEFAULT_ZOOM}
         className="w-full h-full"
       >
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         <SetViewOnChange coords={position} />
         

@@ -133,7 +133,7 @@ const ReportExport = () => {
       document.body.removeChild(reportContainer);
       
       // Save PDF
-      pdf.save(`LIHTC_QAP_Score_Report_${state.replace(/\s/g, "_")}_${new Date().toISOString().slice(0,10)}.pdf`);
+      pdf.save(`LIHTC_QAP_Score_Report_${state.replace(/\s/g, "_")}_${new Date().toISOString().slice(0, 10)}.pdf`);
       
       toast({
         title: "PDF Generated Successfully",
